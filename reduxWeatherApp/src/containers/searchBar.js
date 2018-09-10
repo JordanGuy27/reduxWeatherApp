@@ -8,16 +8,21 @@ export default class SearchBar extends Component {
         this.state = { term: '' };
 
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange(e) {
-        console.log(e.target.value);
+        //console.log(e.target.value);
         this.setState({ term: e.target.value });
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
     }
 
     render() {
         return (
-            <form className="input-group">
+            <form onSubmit={this.onSubmit} className="input-group">
                 <input
                     placeholder="Get a five day forecast for your favourite cities" 
                     onChange={this.onChange}
@@ -31,3 +36,5 @@ export default class SearchBar extends Component {
         )
     }
 }
+
+//callback functions with a reference to 'this' need to be bound
