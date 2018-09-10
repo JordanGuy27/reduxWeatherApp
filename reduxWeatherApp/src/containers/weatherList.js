@@ -1,0 +1,29 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+//always remove export default on the class once the export default connect has been written
+class WeatherList extends Component {
+    render() {
+        return (
+            <table className="table table-hover">
+                <thead>
+                    <tr>
+                        <th>City</th>
+                        <th>Temperature</th>
+                        <th>Pressure</th>
+                        <th>Humidity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        )
+    }
+}
+
+function mapStateToProps({ weather }) {
+     return { weather }; // same as {weather: weather}
+}
+
+export default connect (mapStateToProps)(WeatherList);
