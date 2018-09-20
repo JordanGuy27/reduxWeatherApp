@@ -16,3 +16,5 @@ export function fetchWeather(city) {
         payload: request
     };
 }
+
+//redux promise waits for the request to be completed before sends the action to the reducers

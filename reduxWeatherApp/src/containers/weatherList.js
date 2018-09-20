@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chart from '../components/chart';
+import GoogleMap from '../components/googleMap';
 
 //always remove export default on the class once the export default connect has been written
 class WeatherList extends Component {
@@ -13,10 +14,12 @@ class WeatherList extends Component {
         const pressures = cityData.list.map(weather => weather.main.pressure);
         const humidities = cityData.list.map(weather => weather.main.humidity);
         //these variables are handling the data, therefore the sparklines component will not need to have access to Redux
+        const { lon, lat } = cityData.city.coord;
+        
 
         return (
             <tr key={name}>
-                <td>{name}</td>
+                <td><GoogleMap lon={lon} lat={lat} />{name}</td>
                 <td><Chart data={temps} color="green" units="K" /></td>
                 <td><Chart data={pressures} color="red" units="hPa" /></td>
                 <td><Chart data={humidities} color="blue" units="%" /></td>
